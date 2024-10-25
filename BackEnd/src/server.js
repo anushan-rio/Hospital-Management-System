@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import { dbURL } from './Config/Db.Config.js';
 import {PORT} from "./constant.js"
 
-const app=express();
+const app= express();
 
 //DataBase Connection
 mongoose.connect(dbURL)
@@ -12,3 +12,9 @@ mongoose.connect(dbURL)
     .catch(()=>console.log('Not Connected DB'))
 
 app.listen(PORT,()=>console.log(`app is conected to the ${PORT}`))
+
+//My Routes
+import authRoutes from "./Routers/Auth.Routers.js"
+
+//Routers
+app.use("/api/v1", authRoutes)
