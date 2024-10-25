@@ -1,2 +1,2 @@
 
-export const dbURL = 'mongodb://127.0.0.1:27017/LMS_V1';
+export const dbURL = "mongodb+srv://Sharusan:Sharusan24@clustermain.mpuvv.mongodb.net/?retryWrites=true&w=majority&appName=ClusterMain";
