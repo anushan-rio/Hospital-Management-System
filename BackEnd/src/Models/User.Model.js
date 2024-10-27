@@ -75,7 +75,8 @@ userSchema.virtual("password")
     return this._passsword;
     })
 
+export const User = mongoose.model('User', userSchema);
+
+//export default User;
 
 
-
-module.exports=mongoose.model("User",userSchema)

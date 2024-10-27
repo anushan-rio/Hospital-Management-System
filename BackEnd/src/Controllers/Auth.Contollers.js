@@ -1,4 +1,4 @@
-// import User from "../Models/User.Model.js";
+ import  {User}  from "../Models/User.Model.js"
 
 
 export const Signup = (req,res)=>{
