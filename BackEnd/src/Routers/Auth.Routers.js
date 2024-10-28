@@ -3,7 +3,7 @@ import {Signup} from "../Controllers/Auth.Contollers.js"
 
 const router = Router();
 
-router.get("/signup", Signup)
+router.post("/signup", Signup)
 
 
 
