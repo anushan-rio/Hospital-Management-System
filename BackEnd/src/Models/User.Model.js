@@ -41,28 +41,21 @@ var userSchema=new mongoose.Schema({
 {timestamps:true}
 )
 
-userSchema.methods={
-    
-    autheticate: function(plainpassword) {
-        return this.securepassword(plainpassword) === this.encry_password;
+userSchema.methods= {
+
+    authenticate: function(plainpassword){      
+        return this.securePassword(plainpassword)=== this.encry_password
     },
-    
-    securepassword:function(plainpassword){
-        if(!plainpassword){
-            return "";
-        }
-        try{
-            return crypto
-            .createHmac("sha256", this.salt)
-            .update(plainpassword)
-            .digest("hex");
-            
-        }
-        catch(err){
-            console.log("if4")
-            return "";
-        }
-    }
+    securePassword: function(plainpassword){
+        if(!plainpassword)return ""
+    try {
+        return crypto
+        .createHmac('sha256', this.salt)
+        .update(plainpassword)
+        .digest('hex');
+    } catch (error) {
+        return ""
+    }}
 }
 
 userSchema.virtual("password")
