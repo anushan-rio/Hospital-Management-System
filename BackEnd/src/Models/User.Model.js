@@ -27,8 +27,8 @@ var userSchema=new mongoose.Schema({
         default:0
     },
     Isverified:{
-        type:String,
-        default:0
+        type: Boolean,
+        default: false,
     },
     Phno:{
         type:Number,

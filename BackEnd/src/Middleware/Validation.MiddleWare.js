@@ -1,7 +1,7 @@
 
-//validation checking functionality 
 import { validationResult } from 'express-validator';
 
+//validation checking functionality 
 export const validateResult = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
