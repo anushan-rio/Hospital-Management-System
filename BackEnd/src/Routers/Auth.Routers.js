@@ -8,8 +8,11 @@ import  { RegisterValidator }  from "../Validation/Register.Validation.js"
 
 const router = Router();
 
+//router.param("userId",GetUserId)
+
 router.post("/signup",RegisterValidator,validateResult, Signup);
 router.post("/sendotp",SendOpt);
+router.post("/verifyotp",VerifyOtp);
 router.post("/verifyotp",VerifyOtp);
 
 

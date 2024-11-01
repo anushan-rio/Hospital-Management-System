@@ -1,10 +1,12 @@
 
- import  {User}  from "../Models/User.Model.js";
- import { SUCESS_MESSAGE, CATCH_MESSAGE} from "../constant.js";
- import { generateAccessToken } from "../Helper/Accesstoken.Helper.js"
+import  {User}  from "../Models/User.Model.js";
+import { SUCESS_MESSAGE, CATCH_MESSAGE} from "../constant.js";
+import { generateAccessToken } from "../Helper/Accesstoken.Helper.js"
 import {Otpmodel} from "../Models/VerifyOtp.Model.js"
 import { sendOtpEmail ,generateOTP } from  "../Helper/OtpSender.js";
 
+
+//Resgister Controller
 export const Signup = async (req,res)=>{
     try{
         const {Email} = req.body
@@ -32,6 +34,7 @@ export const Signup = async (req,res)=>{
         });
     }}
 
+//Sigin Controller
 export const Signin = async (req, res) => {
     
     try {
@@ -84,6 +87,7 @@ export const SendOpt=async (req,res)=>{
 
 }
 
+//Verify Controller
 export const VerifyOtp=async (req,res)=>{
     try{
         const {otp}=req.body;
@@ -104,4 +108,11 @@ export const VerifyOtp=async (req,res)=>{
     catch(error){
         return res.status(400).json({ error: CATCH_MESSAGE});
     }
+}
+
+
+//SiginOut Controller
+export const Signout=(req,res)=>{
+    res.clearCookie("token")
+    res.json({ message:"User Signout Successful"})
 }

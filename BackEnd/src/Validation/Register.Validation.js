@@ -1,7 +1,7 @@
 import { body, validationResult } from 'express-validator';
 import { validateResult } from "../Middleware/Validation.MiddleWare.js"
 
-
+//Register Validation
 export const RegisterValidator = [
     body('Email')
         .notEmpty().withMessage('Email is required')
