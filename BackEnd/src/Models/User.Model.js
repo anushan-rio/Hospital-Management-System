@@ -62,13 +62,10 @@ userSchema.virtual("password")
     .set(function(password){
         this._passsword=password;
         this.salt=uuidv1();
-        this.encry_password=this.securepassword(password);
+        this.encry_password=this.securePassword(password);
     })
     .get(function(){
     return this._passsword;
     })
 
 export const User = mongoose.model('User', userSchema);
-
-
-

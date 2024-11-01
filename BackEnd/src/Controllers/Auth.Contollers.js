@@ -1,4 +1,3 @@
-
 import  {User}  from "../Models/User.Model.js";
 import { SUCESS_MESSAGE, CATCH_MESSAGE} from "../constant.js";
 import { generateAccessToken } from "../Helper/Accesstoken.Helper.js"
@@ -6,19 +5,26 @@ import {Otpmodel} from "../Models/VerifyOtp.Model.js"
 import { sendOtpEmail ,generateOTP } from  "../Helper/OtpSender.js";
 
 
-//Resgister Controller
+//Signup Controller
 export const Signup = async (req,res)=>{
     try{
         const {Email} = req.body
+        console.log(Email)
         const ExistingEmail= await User.findOne({Email})
+        console.log(Email)
+
         if(ExistingEmail){
             return res.status(400).json({
                 message: "User email already exist"
             })
         }
+        console.log(Email)
+
     const user = new User(req.body);
+    console.log(Email)
         await user.save() 
         .then((userdata)=>{
+            console.log("userdata---",userdata)
             return res.status(200).json({HospitalName: userdata.HospitalName,Email: userdata.Email,id: userdata._id,message: SUCESS_MESSAGE
             })
         })
@@ -34,7 +40,7 @@ export const Signup = async (req,res)=>{
         });
     }}
 
-//Sigin Controller
+//Sign in Controller 
 export const Signin = async (req, res) => {
     
     try {
@@ -51,13 +57,10 @@ export const Signin = async (req, res) => {
             return res.status(401).json({
                 error: "Email and Password do not match"
             });
-        }
-        
+        } 
         const accesstoken =  generateAccessToken(user)
         const {_id,Role}= user
             return res.json({accesstoken, user: {_id,Role,Email}})
-        
-        
     } catch (error) {
         return res.status(500).json({
             error: "Internal Server Error"
@@ -87,7 +90,6 @@ export const SendOpt=async (req,res)=>{
 
 }
 
-//Verify Controller
 export const VerifyOtp=async (req,res)=>{
     try{
         const {otp}=req.body;
@@ -108,11 +110,4 @@ export const VerifyOtp=async (req,res)=>{
     catch(error){
         return res.status(400).json({ error: CATCH_MESSAGE});
     }
-}
-
-
-//SiginOut Controller
-export const Signout=(req,res)=>{
-    res.clearCookie("token")
-    res.json({ message:"User Signout Successful"})
 }
