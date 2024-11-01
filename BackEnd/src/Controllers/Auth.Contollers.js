@@ -1,6 +1,8 @@
-import  {User}  from "../Models/User.Model.js";
+
+ import  {User}  from "../Models/User.Model.js";
+ import { SUCESS_MESSAGE, CATCH_MESSAGE} from "../constant.js";
+ import { generateAccessToken } from "../Helper/Accesstoken.Helper.js"
 import {Otpmodel} from "../Models/VerifyOtp.Model.js"
-import { SUCESS_MESSAGE, CATCH_MESSAGE} from "../constant.js";
 import { sendOtpEmail ,generateOTP } from  "../Helper/OtpSender.js";
 
 export const Signup = async (req,res)=>{
@@ -23,13 +25,43 @@ export const Signup = async (req,res)=>{
             error: CATCH_MESSAGE
         })
         })
-}
-catch(error){
-    return res.status(400).json({
-        error: CATCH_MESSAGE
-    });
-}
-}
+    }
+    catch (error) {
+        return res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }}
+
+export const Signin = async (req, res) => {
+    
+    try {
+        const { Email, password } = req.body;
+        const user = await User.findOne({ Email });
+        
+        if (!user) {
+            return res.status(400).json({
+                error: "Email Not Found"
+            });
+        }
+
+        if (!user.authenticate(password)) {
+            return res.status(401).json({
+                error: "Email and Password do not match"
+            });
+        }
+        
+        const accesstoken =  generateAccessToken(user)
+        const {_id,Role}= user
+            return res.json({accesstoken, user: {_id,Role,Email}})
+        
+        
+    } catch (error) {
+        return res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }
+};
+
 
 
 //Send Otp Controller
