@@ -58,6 +58,7 @@ userSchema.methods= {
     }}
 }
 
+//Virtual Password
 userSchema.virtual("password")
     .set(function(password){
         this._passsword=password;
