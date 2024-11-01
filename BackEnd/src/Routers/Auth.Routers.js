@@ -1,11 +1,16 @@
 import { Router } from 'express';
-import {Signin, Signup} from "../Controllers/Auth.Contollers.js"
+
+
+
+import {Signup,SendOpt,VerifyOtp} from "../Controllers/Auth.Contollers.js"
+import { validateResult } from "../Middleware/Validation.MiddleWare.js"
+import  { RegisterValidator }  from "../Validation/Register.Validation.js"
 
 const router = Router();
 
-router.post("/signup", Signup)
-router.post("/signin", Signin)
-
+router.post("/signup",RegisterValidator,validateResult, Signup);
+router.post("/sendotp",SendOpt);
+router.post("/verifyotp",VerifyOtp);
 
 
 

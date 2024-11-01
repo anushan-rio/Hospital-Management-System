@@ -27,8 +27,8 @@ var userSchema=new mongoose.Schema({
         default:0
     },
     Isverified:{
-        type:String,
-        default:0
+        type: Boolean,
+        default: false,
     },
     Phno:{
         type:Number,
@@ -70,6 +70,5 @@ userSchema.virtual("password")
 
 export const User = mongoose.model('User', userSchema);
 
-//export default User;
 
 
