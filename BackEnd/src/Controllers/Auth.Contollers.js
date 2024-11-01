@@ -1,10 +1,11 @@
-
- import  {User}  from "../Models/User.Model.js";
- import { SUCESS_MESSAGE, CATCH_MESSAGE} from "../constant.js";
- import { generateAccessToken } from "../Helper/Accesstoken.Helper.js"
+import  {User}  from "../Models/User.Model.js";
+import { SUCESS_MESSAGE, CATCH_MESSAGE} from "../constant.js";
+import { generateAccessToken } from "../Helper/Accesstoken.Helper.js"
 import {Otpmodel} from "../Models/VerifyOtp.Model.js"
 import { sendOtpEmail ,generateOTP } from  "../Helper/OtpSender.js";
 
+
+//Signup Controller
 export const Signup = async (req,res)=>{
     try{
         const {Email} = req.body
@@ -32,6 +33,7 @@ export const Signup = async (req,res)=>{
         });
     }}
 
+//Sign in Controller 
 export const Signin = async (req, res) => {
     
     try {
@@ -48,13 +50,10 @@ export const Signin = async (req, res) => {
             return res.status(401).json({
                 error: "Email and Password do not match"
             });
-        }
-        
+        } 
         const accesstoken =  generateAccessToken(user)
         const {_id,Role}= user
             return res.json({accesstoken, user: {_id,Role,Email}})
-        
-        
     } catch (error) {
         return res.status(500).json({
             error: "Internal Server Error"
