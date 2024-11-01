@@ -58,11 +58,12 @@ userSchema.methods= {
     }}
 }
 
+//Virtual Password
 userSchema.virtual("password")
     .set(function(password){
         this._passsword=password;
         this.salt=uuidv1();
-        this.encry_password=this.securePassword(password);
+        this.encry_password= this.securePassword(password);
     })
     .get(function(){
     return this._passsword;
