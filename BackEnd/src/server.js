@@ -18,7 +18,9 @@ app.use(bodyParser.json());
 
 
 //My Routes
-import authRoutes from "./Routers/Auth.Routers.js"
+import authRoutes from "./Routers/Auth.Routers.js";
+import patientRoutes from"./Routers/Patient.Routers.js";
 
 //Routers
 app.use("/api/v1", authRoutes)
+app.use("/api/V1", patientRoutes)
