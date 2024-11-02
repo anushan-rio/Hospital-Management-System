@@ -32,7 +32,6 @@ export const IsSignedIn = (req, res, next) => {
     try {
         const decoded = jwt.verify(token, ACCESS_TOKEN_SECRET);
         req.user = decoded;
-        console.log("ioioio")
         next();
     } catch (error) {
         return res.status(403).json({ message: 'Invalid Or Expired Token' });
@@ -55,7 +54,7 @@ export const IsAuthenticate=(req,res,next)=>{
 
 //IsAdmin Middleware
 export const IsAdmin=(req,res,next)=>{
-    if(!req.profile.Role=="0"){
+    if(req.profile.Role!="0"){
         return res.json({message:"You Are Not Admin"})
     }
     next();
