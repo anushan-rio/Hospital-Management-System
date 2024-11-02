@@ -11,7 +11,7 @@ export const AddPatientInfo = async(req,res)=>{
         })
         .catch((error)=>{
             return res.status(400).json({
-            error: error
+            error: CATCH_MESSAGE
         })
         })
 }

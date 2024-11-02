@@ -12,7 +12,6 @@ router.post("/signup",RegisterValidator,validateResult, Signup);
 router.post("/signin",SigninValidator,validateResult, Signin);
 router.post("/sendotp",SendOpt);
 router.post("/verifyotp",VerifyOtp);
-router.post("/verifyotp",VerifyOtp);
 
 
 

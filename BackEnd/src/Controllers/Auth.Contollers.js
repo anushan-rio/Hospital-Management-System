@@ -40,7 +40,6 @@ export const Signin = async (req, res) => {
     try {
         const { Email, password } = req.body;
         const user = await User.findOne({ Email });
-        
         if (!user) {
             return res.status(400).json({
                 error: "Email Not Found"
@@ -53,8 +52,9 @@ export const Signin = async (req, res) => {
             });
         } 
         const accesstoken =  generateAccessToken(user)
-        const {_id,Role}= user
-            return res.json({accesstoken, user: {_id,Role,Email}})
+        const {_id,Role,Isverified}= user
+        
+            return res.json({accesstoken, user: {_id,Role,Isverified}})
     } catch (error) {
         return res.status(500).json({
             error: "Internal Server Error"

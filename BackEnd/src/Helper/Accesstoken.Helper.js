@@ -1,5 +1,6 @@
 //GenerateAccessToken 
 import jwt from "jsonwebtoken";
+import {ACCESS_TOKEN_SECRET} from "../constant.js"
 import { expressjwt } from 'express-jwt';
 
 
@@ -8,6 +9,5 @@ export function generateAccessToken(user) {
         id: user.id,
         Email: user.Email   
     };
-    const SECRET_KEY= "Managament"
-    return jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' }); 
+    return jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: '1h' }); 
 }
