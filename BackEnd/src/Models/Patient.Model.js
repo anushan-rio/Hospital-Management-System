@@ -71,6 +71,7 @@ var PatientSchema=new mongoose.Schema({
         type:String,
         default:2
     },
+    //User = admin
     User:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
