@@ -1,6 +1,8 @@
 import { Router } from 'express';
+
 import {AddPatientInfo, GetAllPatient,GetPatient, RemovePatientData, UpdatePatientData} from "../Controllers/Patient.contollers.js"
 import {GetUserId,IsAdmin,IsAuthenticate,IsSignedIn} from "../Middleware/Auth.MiddleWare.js"
+
 import { GetPatientID } from '../Middleware/Patient.Middlware.js';
 
 

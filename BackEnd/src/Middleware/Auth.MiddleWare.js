@@ -54,6 +54,7 @@ export const IsAuthenticate=(req,res,next)=>{
 
 //IsAdmin Middleware
 export const IsAdmin=(req,res,next)=>{
+    console.log("req.profile.Role---",req.profile.Role)
     if(req.profile.Role!="0"){
         return res.json({message:"You Are Not Admin"})
     }
@@ -63,7 +64,7 @@ export const IsAdmin=(req,res,next)=>{
 
 //IsDoctor Middleware
 export const IsDoctor=(req,res,next)=>{
-    if(!req.profile.Role=="1"){
+    if(req.profile.Role!="1"){
         return res.json({message:"You Are Not Admin"})
     }
     next();
@@ -71,7 +72,7 @@ export const IsDoctor=(req,res,next)=>{
 
 //Is paitent Middleware
 export const IsPaitent=(req,res,next)=>{
-    if(!req.profile.Role=="2"){
+    if(req.profile.Role!="2"){
         return res.json({message:"You Are Not Admin"})
     }
     next();
