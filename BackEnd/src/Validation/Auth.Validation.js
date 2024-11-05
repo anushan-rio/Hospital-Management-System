@@ -31,3 +31,14 @@ export const SigninValidator = [
     .notEmpty().withMessage('password is required')
     
 ]
+
+export const SendOtpValidator=[
+    body('Email')
+    .notEmpty().withMessage('Email is required')
+        .isEmail().withMessage('Please enter a valid Email address')
+]
+
+export const OtpValidator=[
+    body('otp')
+        .notEmpty().withMessage('otp is required')
+]

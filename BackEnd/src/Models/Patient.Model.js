@@ -9,25 +9,25 @@ var PatientSchema=new mongoose.Schema({
     },
     Patient_Name:{
         type:String,
-        required:true,
+        //required:true,
         maxlength:32,
         trim:true
     },
     Patient_Age:{
         type:Number,
-        required:true,
+        //required:true,
         trim:true
     },
     Patient_Gender:{
         type:String,
-        required:true,
+        //required:true,
         enum: ['male', 'female', 'other'],
         trim:true
     },
     Patient_Contact: {
         Emergency_contact_number:{
             type: Number,
-            required:true,
+           // required:true,
             trim:true,
             maxlength:10
         },
