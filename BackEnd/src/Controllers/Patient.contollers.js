@@ -51,4 +51,33 @@ export const GetPatient =(req,res)=>{
 }
 
 
+export const RemovePatientData = (req,res)=>{
+    try {
+        Patient.findByIdAndDelete({_id:req.patient.id})
+        .then((RemovePatientData)=>{
+            return res.status(200).json({RemovePatientData})
+        })
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }
+}
 
+
+export const UpdatePatientData =(req,res) =>{
+    try {
+        const Updates = req.body
+       Patient.findByIdAndUpdate({_id:req.patient.id}, Updates)
+        .then((UpdatedDetails)=>{
+            return res.status(200).json({UpdatedDetails})
+        })        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }
+}
