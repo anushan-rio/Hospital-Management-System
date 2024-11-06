@@ -13,6 +13,7 @@ export const GetUserId=(req, res, next, id)=>{
                 return res.json({error:"No User Found"});
             }
             req.profile=user;
+            
             next();
         })
         .catch((error)=>{
@@ -72,9 +73,16 @@ export const IsDoctor=(req,res,next)=>{
 
 //Is paitent Middleware
 export const IsPaitent=(req,res,next)=>{
-    if(req.profile.Role!="2"){
+    if(req.patient.Role!="2"){
         return res.json({message:"You Are Not Admin"})
     }
     next();
 }
 
+//Is Admin Or Doctor Middleware
+export const IsAdminOrDoctor=(req,res,next)=>{
+    if(req.profile.Role!="0" || req.profile.Role!="1"){
+        return res.json({message:"You Are Not Admin"})
+    }
+    next();
+}
