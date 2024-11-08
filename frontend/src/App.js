@@ -1,10 +1,10 @@
-
+import  React from "react"
+import Login from "./Pages/Login/Login"
+import Register from "./Pages/Register/Register"
 function App() {
-  return (
-    <div className="App">
-     <h1>HEllO world!!!</h1>
-    </div>
-  );
+  return(
+    <Register/>
+  )
 }
 
 export default App;

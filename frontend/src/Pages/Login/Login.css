@@ -1,0 +1,33 @@
+.header {
+    background-color: black;
+    color: white;
+    text-align: left;
+    padding: 10px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Existing styles */
+  
+  .form-control {
+    border-radius: 10px;
+  }
+  
+  
+  
+  .form-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+  }
+  
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
