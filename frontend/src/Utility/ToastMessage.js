@@ -1,11 +1,25 @@
-  import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const ToastMessage = () => {
-  toast.success(" successfully!", {position: "bottom-right",autoClose: 2000,});
+const ToastMessage = (message,messagetype) => {
+  console.log("message-----message----",message)
+  if(messagetype==="Warning"){
+    toast.warning(message, {position: "bottom-right",autoClose: 2000,});
+  }
+  if(messagetype==="Success"){
+    toast.success(message, {position: "bottom-right",autoClose: 2000,});
+  }
+  if(messagetype==="Error"){
+    toast.error(message, {position: "bottom-right",autoClose: 2000,});
+  }
 
 };
 
 export default ToastMessage
+
+
+
+
+
