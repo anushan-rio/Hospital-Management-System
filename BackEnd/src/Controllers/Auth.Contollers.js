@@ -18,7 +18,7 @@ export const Signup = async (req,res)=>{
     const user = new User(req.body);
         await user.save() 
         .then((userdata)=>{
-            return res.status(200).json({HospitalName: userdata.HospitalName,Email: userdata.Email,id: userdata._id,Savedflag:"1"
+            return res.status(200).json({HospitalName: userdata.HospitalName,Role:userdata.Role,Email: userdata.Email,id: userdata._id,Savedflag:"1"
             })
         })
         .catch((error)=>{
