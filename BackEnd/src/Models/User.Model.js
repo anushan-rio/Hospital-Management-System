@@ -24,7 +24,7 @@ var userSchema=new mongoose.Schema({
     salt:String,
     Role:{
         type:String,
-        default:0
+        default:'Admin'
     },
     Isverified:{
         type: Boolean,
@@ -35,7 +35,7 @@ var userSchema=new mongoose.Schema({
         trim:true,
         maxlength:10,
         required:true
-    }
+    },  
     
 },
 {timestamps:true}
