@@ -10,6 +10,13 @@
     font-weight: bold;
     margin: 0;
   }
+
+  header{
+    padding: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
   
   /* Existing styles */
   
@@ -30,4 +37,7 @@
     height: auto;
     border-radius: 10px;
   }
-  
+  .logo {
+    height: 100px;  /* Adjust size as per your logo */
+    width: auto;
+  }

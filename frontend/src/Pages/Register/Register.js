@@ -33,7 +33,7 @@ const Register = () => {
                 message =data.message;
                 messagetype="Warning";
             }
-            if(data.Savedflag){
+            if(data.Savedflag==="1"){
                 message ="Data Saved SucessFully";
                 messagetype="Success";
                 setValues({Email: "",password: "",HospitalName: "",Phno: ""});
@@ -78,4 +78,4 @@ const Register = () => {
 );
 };
 
-export default Register
+export default Register;
