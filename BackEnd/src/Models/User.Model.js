@@ -24,7 +24,7 @@ var userSchema=new mongoose.Schema({
     salt:String,
     Role:{
         type:String,
-        enum:['Admin','Doctor','Patient']
+        default:'Admin'
     },
     Isverified:{
         type: Boolean,
@@ -35,15 +35,7 @@ var userSchema=new mongoose.Schema({
         trim:true,
         maxlength:10,
         required:true
-    },
-    Doctor_Exp:{
-        type:Number,
-        trim:true,
-    },
-    Doctor_Speciality:{
-        type:String,
-        trim:true
-    }
+    },  
     
 },
 {timestamps:true}
