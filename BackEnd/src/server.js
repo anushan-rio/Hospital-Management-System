@@ -20,11 +20,14 @@ app.use(cors());
 
 //My Routes
 import authRoutes from "./Routers/Auth.Routers.js";
-import patientRoutes from"./Routers/Patient.Routers.js";
+import patientRoutes from "./Routers/Patient.Routers.js";
+import DoctorRoutes from "./Routers/Doctor.Routers.js";
 
 //Routers
-app.use("/api/v1", authRoutes)
-app.use("/api/V1", patientRoutes)
+app.use("/api/v1", authRoutes);
+app.use("/api/V1", patientRoutes);
+app.use("/api/V1", DoctorRoutes);
+
 
 
 app.listen(PORT,()=>console.log(`app is conected to the ${PORT}`))

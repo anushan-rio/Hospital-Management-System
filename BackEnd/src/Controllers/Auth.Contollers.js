@@ -3,6 +3,7 @@ import { SUCESS_MESSAGE, CATCH_MESSAGE} from "../constant.js";
 import { generateAccessToken } from "../Helper/Accesstoken.Helper.js"
 import {Otpmodel} from "../Models/VerifyOtp.Model.js"
 import { sendOtpEmail ,generateOTP } from  "../Helper/OtpSender.js";
+import {Doctors} from "../Models/Doctor.Model.js"
 
 
 //Signup Controller
@@ -38,8 +39,16 @@ export const Signup = async (req,res)=>{
 export const Signin = async (req, res) => {
     
     try {
-        const { Email, password } = req.body;
-        const user = await User.findOne({ Email });
+        const { Email, password,role } = req.body;
+        var user;
+        if(role=="Doctor"){
+            user= await Doctors.findOne({ Email });
+        }
+        if(role=="Admin"){
+            user= await User.findOne({ Email });
+
+        }
+        
         if (!user) {
             return res.status(400).json({
                 error: "Email Not Found"

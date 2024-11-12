@@ -34,7 +34,7 @@ export const SigninValidator = [
 
 export const SendOtpValidator=[
     body('Email')
-    .notEmpty().withMessage('Email is required')
+        .notEmpty().withMessage('Email is required')
         .isEmail().withMessage('Please enter a valid Email address')
 ]
 
