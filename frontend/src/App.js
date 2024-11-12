@@ -1,10 +1,15 @@
 import  React from "react"
-import Login from "./Pages/Login/Login"
-import Register from "./Pages/Register/Register"
+import Routerconfig from "./Router/Router"
+
+
+
+
 function App() {
-  return(
-    <Register/>
-  )
+  return (
+      <Routerconfig />
+  );
 }
+
+
 
 export default App;

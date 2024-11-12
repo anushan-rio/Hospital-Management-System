@@ -10,7 +10,7 @@ const router = Router();
 
 router.post("/signup",RegisterValidator,validateResult, Signup);
 router.post("/signin",SigninValidator,validateResult, Signin);
-router.post("/sendotp",validateResult,SendOpt);
+router.post("/sendotp",SendOtpValidator,validateResult,SendOpt);
 router.post("/verifyotp",validateResult,VerifyOtp);
 
 
