@@ -4,7 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const ToastMessage = (message,messagetype) => {
-  console.log("message-----message----",message)
   if(messagetype==="Warning"){
     toast.warning(message, {position: "bottom-right",autoClose: 2000,});
   }
