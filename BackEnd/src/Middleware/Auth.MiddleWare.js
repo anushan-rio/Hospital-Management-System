@@ -2,23 +2,28 @@ import express from 'express';
 import { expressjwt } from 'express-jwt';
 import jwt from "jsonwebtoken";
 import  {User}  from "../Models/User.Model.js";
+import {Doctors} from "../Models/Doctor.Model.js"
 import {CATCH_MESSAGE,ACCESS_TOKEN_SECRET} from "../constant.js";
 
 
 //Geting UserID
-export const GetUserId=(req, res, next, id)=>{
-    User.findById(id)
-        .then(user=>{
-            if(!user){
-                return res.json({error:"No User Found"});
-            }
-            req.profile=user;
-            
-            next();
-        })
-        .catch((error)=>{
-            return res.status(400).json({error: CATCH_MESSAGE})
-        })
+export const GetUserId=async(req, res, next, id)=>{
+    try{
+        var user;
+        user=await User.findById(id);
+        if(!user){
+            user=await Doctors.findById(id);
+        }
+        req.profile=user;
+        next();
+    }
+    catch  (error){
+        return res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }
+
+        
     
 }
 

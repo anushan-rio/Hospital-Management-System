@@ -43,6 +43,11 @@ var DoctorSchema=new mongoose.Schema({
         type:String,
         default:'Doctor'
     },
+    User:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+        
+    },
     createdAt: {
         type: Date,
         default: Date.now
