@@ -24,6 +24,7 @@ var DoctorSchema=new mongoose.Schema({
         required:true,
         trim:true
     },
+    salt:String,
     Specialization:{
         type:String,
         required:true,
@@ -56,8 +57,8 @@ var DoctorSchema=new mongoose.Schema({
 
 
 DoctorSchema.methods= {
-
-    authenticate: function(plainpassword){      
+    
+    authenticate: function(plainpassword){   
         return this.securePassword(plainpassword)=== this.encry_password
     },
     securePassword: function(plainpassword){

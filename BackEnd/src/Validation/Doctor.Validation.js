@@ -14,7 +14,7 @@ export const DoctorValidation = [
         .isEmail().withMessage('Please enter a valid Email address'),
 
     body('password')
-        .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
+        .isLength({ min: 7 }).withMessage('Password must be at least 6 characters long')
         .notEmpty().withMessage('password is required'),
 
     body('Specialization')
