@@ -3,17 +3,20 @@ import { v1 as uuidv1 } from 'uuid';
 import crypto from 'crypto';
 
 
-var userSchema=new mongoose.Schema({
+var DoctorSchema=new mongoose.Schema({
+    DoctorID:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    Name:{
+        type:String,
+        required:true,
+        trim:true
+    },
     Email:{
         type:String,
         required:true,
-        maxlength:32,
-        trim:true
-    },
-    HospitalName:{
-        type:String,
-        required:true,
-        maxlength:32,
         trim:true
     },
     encry_password:{
@@ -22,30 +25,40 @@ var userSchema=new mongoose.Schema({
         trim:true
     },
     salt:String,
-    Role:{
+    Specialization:{
         type:String,
-        default:'Admin'
-    },
-    Isverified:{
-        type: Boolean,
-        default: false,
+        required:true,
+        trim:true
     },
     Phno:{
         type:Number,
         trim:true,
         maxlength:10,
         required:true
-    },  
+    },
+    Availability:{
+        type:String,
+        enum:['Available','NotAvailable']
+    },
+    Role:{
+        type:String,
+        default:'Doctor'
+    },
+    User:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+        
+    },
     createdAt: {
         type: Date,
         default: Date.now
     }
-}
-)
+})
 
-userSchema.methods= {
 
-    authenticate: function(plainpassword){      
+DoctorSchema.methods= {
+    
+    authenticate: function(plainpassword){   
         return this.securePassword(plainpassword)=== this.encry_password
     },
     securePassword: function(plainpassword){
@@ -61,7 +74,7 @@ userSchema.methods= {
 }
 
 //Virtual Password
-userSchema.virtual("password")
+DoctorSchema.virtual("password")
     .set(function(password){
         this._passsword=password;
         this.salt=uuidv1();
@@ -71,4 +84,4 @@ userSchema.virtual("password")
     return this._passsword;
     })
 
-export const User = mongoose.model('User', userSchema);
+export const Doctors = mongoose.model('Doctor', DoctorSchema);
