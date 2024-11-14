@@ -1,4 +1,5 @@
 import  {User}  from "../Models/User.Model.js";
+import { Patient } from "../Models/Patient.Model.js";
 import { SUCESS_MESSAGE, CATCH_MESSAGE} from "../constant.js";
 import { generateAccessToken } from "../Helper/Accesstoken.Helper.js"
 import {Otpmodel} from "../Models/VerifyOtp.Model.js"
@@ -65,17 +66,35 @@ export const Signin = async (req, res) => {
 
 
 //Send Otp Controller
+// export const SendOpt=async (req,res)=>{
+//     try{
+//             const {Email}=req.body
+//             const Otp=generateOTP();
+            
+//             const ExistingEmail=await  User.findOne({Email})
+//             if(ExistingEmail){
+//                 const saveOtpData = new Otpmodel({...req.body, otp: Otp });
+//                 await saveOtpData.save()
+//                 sendOtpEmail(Email,Otp)
+//                 return res.json({message:`OTP As Sent To Your Mail ${Email}`})
+//             }
+//         }
+//     catch(error){
+//         return res.status(400).json({ error: CATCH_MESSAGE});
+//     }
+
+// }
+
 export const SendOpt=async (req,res)=>{
     try{
-            const {Email}=req.body
+            const {Emergency_Email}=req.body
             const Otp=generateOTP();
-            
-            const ExistingEmail=await  User.findOne({Email})
-            if(ExistingEmail){
+            const ExistingEmail=await Patient.findOne({'Patient_Contact.Emergency_Email': Emergency_Email})
+            if(ExistingEmail){          
                 const saveOtpData = new Otpmodel({...req.body, otp: Otp });
                 await saveOtpData.save()
-                sendOtpEmail(Email,Otp)
-                return res.json({message:`OTP As Sent To Your Mail ${Email}`})
+                sendOtpEmail(Emergency_Email,Otp)
+                return res.json({message:`OTP As Sent To Your Mail ${Emergency_Email}`})
             }
         }
     catch(error){
@@ -89,8 +108,6 @@ export const VerifyOtp=async (req,res)=>{
         const {otp}=req.body;
         const ExistingOtp=await Otpmodel.findOne({otp});
         if(ExistingOtp){
-            
-            
             const filter = { Email: ExistingOtp.Email }; 
             const update = { $set: { Isverified: true } };
             const result = await User.updateOne(filter, update);

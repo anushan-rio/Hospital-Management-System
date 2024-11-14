@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 var OtpSchema=new mongoose.Schema({
-    Email:{
+    Emergency_Email:{
         type:String,
         required:true,
         maxlength:32,
