@@ -1,1 +1,1 @@
-export const API="http://localhost:8080/api/v1";
+export const API="https://hospital-management-system-backend-c4a0.onrender.com";
