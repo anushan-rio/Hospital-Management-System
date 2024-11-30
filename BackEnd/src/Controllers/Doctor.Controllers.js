@@ -68,3 +68,52 @@ export const RemoveDoctorData = (req,res)=>{
         return res.status(500).json({ error: "Internal Server Error"});
     }
 }
+
+
+//GetAllDoctors Data
+export const GetAllDcotor = (req,res)=>{
+    try{
+    Doctors.find({User:req.profile.id})
+    .then((AllDoctorData)=>{
+        return res.status(200).json({AllDoctorData})
+    })
+}
+catch (error) {
+    return res.status(500).json({
+        error: "Internal Server Error"
+    });
+}
+}
+
+
+//GetDoctors Data
+export const GetDoctorData =(req,res)=>{
+    try{
+        Doctors.find({_id:req.doctor.id})
+        .then((DoctorData)=>{
+            return res.status(200).json({DoctorData})
+        })
+    }
+    catch (error) {
+        return res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }
+}
+
+
+//Update Doctor
+export const UpdateDoctorData =(req,res) =>{
+    try {
+        const Updates = req.body
+        Doctors.findByIdAndUpdate({_id:req.doctor.id}, Updates)
+        .then((UpdatedDetails)=>{
+            return res.status(200).json({UpdatedDetails})
+        })        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }
+}

@@ -60,7 +60,6 @@ export const IsAuthenticate=(req,res,next)=>{
 
 //IsAdmin Middleware
 export const IsAdmin=(req,res,next)=>{
-    console.log("req.profile.Role----",req.profile.Role)
     if(req.profile.Role!="Admin"){
         return res.json({message:"You Are Not Admin"})
     }

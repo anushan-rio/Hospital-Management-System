@@ -70,7 +70,7 @@ export const RemovePatientData = (req,res)=>{
 export const UpdatePatientData =(req,res) =>{
     try {
         const Updates = req.body
-       Patient.findByIdAndUpdate({_id:req.patient.id}, Updates)
+    Patient.findByIdAndUpdate({_id:req.patient.id}, Updates)
         .then((UpdatedDetails)=>{
             return res.status(200).json({UpdatedDetails})
         })        
