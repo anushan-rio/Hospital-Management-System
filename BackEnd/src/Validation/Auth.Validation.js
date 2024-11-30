@@ -33,9 +33,9 @@ export const SigninValidator = [
 ]
 
 export const SendOtpValidator=[
-    body('Email')
-        .notEmpty().withMessage('Email is required')
-        .isEmail().withMessage('Please enter a valid Email address')
+    body('Emergency_Email')
+    .notEmpty().withMessage('Email is required')
+
 ]
 
 export const OtpValidator=[
