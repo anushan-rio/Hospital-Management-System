@@ -1,1 +1,2 @@
-export const API="https://hospital-management-system-backend-3wu7.onrender.com";
+export const API="https://hospital-management-system-backend-pxg2.onrender.com";
+
